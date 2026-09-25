@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BloodBridge — Emergency Blood Donation, Matching &amp; Inventory Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     TOAST CONTAINER
+============================================================ -->
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+<!-- ============================================================
+     LANDING VIEW
+============================================================ -->
+<section id="landingView" class="view">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 2C12 2 4.5 10.5 4.5 15.5C4.5 19.64 7.86 23 12 23C16.14 23 19.5 19.64 19.5 15.5C19.5 10.5 12 2 12 2Z"/></svg>
+        </span>
+        <span class="brand-name">BloodBridge</span>
+      </div>
+      <nav class="main-nav" id="mainNav">
+        <a href="#landingView" data-nav="home">Home</a>
+        <a href="#howItWorks" data-nav="how">How It Works</a>
+        <a href="#availability" data-nav="availability">Blood Availability</a>
+        <a href="#about" data-nav="about">About</a>
+        <button class="btn btn-primary btn-sm" id="navLoginBtn">Login</button>
+        <button class="icon-btn" id="darkModeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      </nav>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero-copy">
+        <h1>Connecting Every Drop to Those Who Need It.</h1>
+        <p class="hero-sub">BloodBridge helps hospitals, donors and blood banks connect quickly during critical blood requirements.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="findBloodBtn">Find Blood</button>
+          <button class="btn btn-outline" id="becomeDonorBtn">Become a Donor</button>
+        </div>
+        <div class="hero-stats" id="heroStats"></div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 220 260" width="220" height="260">
+          <path d="M110 10 C110 10 20 120 20 175 C20 226 60 250 110 250 C160 250 200 226 200 175 C200 120 110 10 110 10 Z" fill="var(--primary)"/>
+          <path d="M110 40 C110 40 55 120 55 172 C55 205 79 226 110 226" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="150" cy="150" r="6" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section-block" id="howItWorks">
+      <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">Four simple steps connect every request to the right source of blood.</p>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3>Register</h3>
+            <p>Donors, hospitals and blood banks create a profile with the details that matter for matching.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3>Request</h3>
+            <p>Hospitals submit an emergency blood request with blood group, units and urgency.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3>Match</h3>
+            <p>The system checks inventory and donor availability to surface compatible potential matches.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <h3>Save a Life</h3>
+            <p>Blood banks confirm and dispatch, while everyone tracks the request through to completion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOOD AVAILABILITY -->
+    <section class="section-block alt" id="availability">
+      <div class="container">
+        <h2 class="section-title">Check Blood Availability</h2>
+        <p class="section-desc">A public, demo-data view of blood group availability across the network.</p>
+        <form class="availability-form" id="availabilityForm">
+          <div class="form-group">
+            <label for="availBloodGroup">Blood Group</label>
+            <select id="availBloodGroup">
+              <option value="">All Groups</option>
+              <option>A+</option><option>A-</option>
+              <option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option>
+              <option>O+</option><option>O-</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="availLocation">Location</label>
+            <input type="text" id="availLocation" placeholder="e.g. Panvel">
+          </div>
+          <button type="submit" class="btn btn-primary">Check Availability</button>
+        </form>
+        <div class="availability-results" id="availabilityResults"></div>
+        <p class="demo-note">Demo data only — not real-world blood stock figures.</p>
+      </div>
+    </section>
+
+    <!-- ABOUT / COMPATIBILITY -->
+    <section class="section-block" id="about">
+      <div class="container about-grid">
+        <div>
+          <h2 class="section-title">About BloodBridge</h2>
+          <p>BloodBridge is a Software Engineering academic project: a centralized platform where donors, hospitals, blood banks and administrators coordinate emergency blood matching, request tracking and inventory management.</p>
+        </div>
+        <div class="compat-box">
+          <h3>Blood Compatibility (Informational)</h3>
+          <p>The compatibility logic shown in this prototype is simplified demo logic built for academic demonstration. It must not be used for real medical decisions.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="brand-name footer-brand">BloodBridge</div>
+        <p>"Connecting every drop to those who need it."</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#howItWorks">How It Works</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-academic">
+        <span>Academic Project</span>
+        <span class="muted">Software Engineering Project</span>
+      </div>
+    </div>
+    <p class="disclaimer">BloodBridge is an academic prototype. It is not intended for real-world medical decision-making or emergency healthcare use.</p>
+  </footer>
+</section>
+
+<!-- ============================================================
+     LOGIN VIEW
+============================================================ -->
+<section id="loginView" class="view hidden">
+  <div class="auth-wrap">
+    <button class="btn btn-outline btn-sm back-btn" data-back="landingView">← Back to Home</button>
+    <div class="auth-card">
+      <div class="brand auth-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 2C12 2 4.5 10.5 4.5 15.5C4.5 19.64 7.86 23 12 23C16.14 23 19.5 19.64 19.5 15.5C19.5 10.5 12 2 12 2Z"/></svg>
+        </span>
+        <span class="brand-name">BloodBridge</span>
+      </div>
+      <h2>Log In</h2>
+      <p class="auth-sub">Simulated authentication for this academic prototype.</p>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" required minlength="6">
+        </div>
+        <div class="form-group">
+          <label for="loginRole">Role</label>
+          <select id="loginRole" required>
+            <option value="">Select role</option>
+            <option value="donor">Donor</option>
+            <option value="hospital">Hospital</option>
+            <option value="bloodbank">Blood Bank</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <div class="form-row-between">
+          <label class="checkbox-label"><input type="checkbox" id="rememberMe"> Remember me</label>
+          <a href="#" id="forgotPasswordLink">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+
+      <p class="auth-switch">No account? <a href="#" id="showRegisterLink">Register here</a></p>
+
+      <div class="demo-creds">
+        <h4>Demo Credentials</h4>
+        <ul>
+          <li><strong>Donor:</strong> donor@bloodbridge.demo / password123</li>
+          <li><strong>Hospital:</strong> hospital@bloodbridge.demo / password123</li>
+          <li><strong>Blood Bank:</strong> bloodbank@bloodbridge.demo / password123</li>
+          <li><strong>Admin:</strong> admin@bloodbridge.demo / password123</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REGISTER MODAL
+============================================================ -->
+<div class="modal-overlay hidden" id="registerModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Register</h3>
+      <button class="modal-close" data-close-modal="registerModal">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" required>
+        </div>
+        <div class="form-group">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="regPhone">Phone</label>
+          <input type="tel" id="regPhone" required>
+        </div>
+        <div class="form-group">
+          <label for="regPassword">Password</label>
+          <input type="password" id="regPassword" required minlength="6">
+        </div>
+        <div class="form-group">
+          <label for="regRole">Role</label>
+          <select id="regRole" required>
+            <option value="">Select role</option>
+            <option value="donor">Donor</option>
+            <option value="hospital">Hospital</option>
+            <option value="bloodbank">Blood Bank</option>
+          </select>
+        </div>
+
+        <div id="regDonorFields" class="role-fields hidden">
+          <div class="form-group">
+            <label for="regBloodGroup">Blood Group</label>
+            <select id="regBloodGroup">
+              <option value="">Select</option>
+              <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="regAge">Age</label>
+            <input type="number" id="regAge" min="18" max="65">
+          </div>
+          <div class="form-group">
+            <label for="regGender">Gender</label>
+            <select id="regGender">
+              <option value="">Select</option>
+              <option>Male</option><option>Female</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="regDonorCity">City</label>
+            <input type="text" id="regDonorCity">
+          </div>
+        </div>
+
+        <div id="regHospitalFields" class="role-fields hidden">
+          <div class="form-group">
+            <label for="regHospitalName">Hospital Name</label>
+            <input type="text" id="regHospitalName">
+          </div>
+          <div class="form-group">
+            <label for="regHospitalLicense">License / Registration ID</label>
+            <input type="text" id="regHospitalLicense">
+          </div>
+          <div class="form-group">
+            <label for="regHospitalCity">City</label>
+            <input type="text" id="regHospitalCity">
+          </div>
+        </div>
+
+        <div id="regBloodBankFields" class="role-fields hidden">
+          <div class="form-group">
+            <label for="regBankName">Blood Bank Name</label>
+            <input type="text" id="regBankName">
+          </div>
+          <div class="form-group">
+            <label for="regBankReg">Registration ID</label>
+            <input type="text" id="regBankReg">
+          </div>
+          <div class="form-group">
+            <label for="regBankCity">City</label>
+            <input type="text" id="regBankCity">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     APP SHELL (used by all dashboards)
+============================================================ -->
+<div id="appShell" class="app-shell hidden">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 2C12 2 4.5 10.5 4.5 15.5C4.5 19.64 7.86 23 12 23C16.14 23 19.5 19.64 19.5 15.5C19.5 10.5 12 2 12 2Z"/></svg>
+        </span>
+        <span class="brand-name">BloodBridge</span>
+      </div>
+      <button class="icon-btn sidebar-close" id="sidebarCloseBtn" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="sidebar-user">
+      <div class="avatar" id="sidebarAvatar">U</div>
+      <div>
+        <div class="sidebar-user-name" id="sidebarUserName">User</div>
+        <div class="sidebar-user-role" id="sidebarUserRole">Role</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="sidebarNav"></nav>
+    <button class="btn btn-outline btn-block logout-btn" id="logoutBtn">Logout</button>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="icon-btn sidebar-open" id="sidebarOpenBtn" aria-label="Open menu">☰</button>
+      <div>
+        <h1 class="page-title" id="pageTitle">Dashboard</h1>
+        <p class="page-desc" id="pageDesc"></p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="darkModeToggle2" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+        <button class="icon-btn notif-btn" id="notifBellBtn" aria-label="Notifications">
+          🔔<span class="notif-dot hidden" id="notifDot"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-content" id="appContent"></main>
+  </div>
+</div>
+
+<!-- ============================================================
+     GENERIC MODAL (reused for view/edit/confirm dialogs)
+============================================================ -->
+<div class="modal-overlay hidden" id="genericModal">
+  <div class="modal" id="genericModalBox">
+    <div class="modal-header">
+      <h3 id="genericModalTitle">Title</h3>
+      <button class="modal-close" data-close-modal="genericModal">&times;</button>
+    </div>
+    <div class="modal-body" id="genericModalBody"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
