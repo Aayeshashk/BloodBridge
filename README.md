@@ -1,141 +1,99 @@
-🩸 BloodBridge
+# 🩸 BloodBridge
 
-A web-based platform for connecting blood donors, hospitals, and blood availability during emergency situations.
+> A web-based platform for connecting blood donors, hospitals, and blood availability during emergency situations.
 
-BloodBridge is a frontend prototype designed to simplify the coordination of blood donation and emergency blood requests through a centralized, user-friendly interface.
+BloodBridge is a frontend web application designed to simplify the coordination of blood donation and emergency blood requests through a centralized and user-friendly interface.
 
-The project focuses on the interaction between donors, hospitals, blood banks, and administrators, with interfaces for blood discovery, emergency requests, availability, notifications, and request tracking.
+The project focuses on the interaction between **Donors, Hospitals, Blood Banks, and Administrators**, providing interfaces for blood discovery, emergency requests, availability, notifications, and request tracking.
 
-✨ Features
-🩸 Blood & Donor Management
-Donor registration and login interface
-Donor profile management
-Blood group information
-Donor availability interface
-🚨 Emergency Requests
-Create emergency blood requests
-Specify required blood group and units
-View and track request status
-Emergency request workflow
-🏥 Blood Bank & Hospital Interface
-Blood availability interface
-Blood inventory representation
-Hospital-side request management
-Blood bank-side management interface
-🔔 Notifications
-Notification interface for important request and matching updates
-📊 Dashboard
-Role-based dashboard interfaces
-Overview of blood requests and availability
-User activity information
-📱 Responsive Design
-Clean and intuitive UI
-Responsive layouts for different screen sizes
-🛠️ Tech Stack
-Technology	Purpose
-HTML5	Application structure
-CSS3	Styling and responsive UI
-JavaScript	Frontend logic and interactions
-LocalStorage	Prototype data persistence
-🏗️ Project Architecture
-                    BLOODBRIDGE
-                        │
-             ┌──────────┴──────────┐
-             │                     │
-          Users                Institutions
-             │                     │
-      ┌──────┼──────┐        ┌────┴────┐
-      │      │      │        │         │
-    Donor  Hospital Admin  Blood Bank
-      │      │      │        │
-      └──────┴──────┴────────┘
-                 │
-                 ▼
-        Blood Coordination
-                 │
-        ┌────────┼────────┐
-        ▼        ▼        ▼
-      Search   Requests  Availability
-📂 Project Structure
-BloodBridge/
-│
-├── index.html
-├── style.css
-├── script.js
-├── .gitignore
-└── README.md
-File Overview
+---
 
-index.html
-Contains the main application interface and page structure.
+## ✨ Features
 
-style.css
-Contains the visual styling, layouts, components, and responsive design.
+### 🩸 Donor Management
 
-script.js
-Handles frontend interactions, application logic, and prototype data handling.
+- Donor registration and login interface
+- Donor profile management
+- Blood group information
+- Donor availability management
 
-.gitignore
-Specifies files and folders that should not be tracked by Git.
+### 🚨 Emergency Blood Requests
 
-🚀 Getting Started
-Clone the repository
-git clone https://github.com/Aayeshashk/BloodBridge.git
-Open the project
-cd BloodBridge
-Run locally
+- Create emergency blood requests
+- Specify required blood group and number of units
+- Track request status
+- Emergency request workflow
 
-You can open index.html directly in a browser.
+### 🏥 Hospital Management
 
-For development, you can also use VS Code Live Server.
+- Hospital-side blood request interface
+- View blood availability
+- Manage active requests
+- Track request progress
 
-🎯 Project Objective
+### 🏦 Blood Bank Management
 
-BloodBridge aims to demonstrate how a centralized software platform can help coordinate blood donors, hospitals, and blood banks.
+- Blood inventory interface
+- Blood group availability
+- Inventory management interface
+- Blood request coordination
 
-The project was designed around the following core workflow:
+### 🔔 Notifications
 
-Blood Requirement
-       ↓
-Emergency Request
-       ↓
-Blood Search
-       ↓
-Potential Matching
-       ↓
-Availability
-       ↓
-Request Tracking
+- Notification interface for important blood request updates
+- Request and matching status notifications
 
-The prototype focuses primarily on the user experience and frontend implementation of this workflow.
+### 📊 Dashboard
 
-🔮 Future Scope
+- Role-based dashboard interfaces
+- Blood request overview
+- Blood availability overview
+- User activity information
 
-The current version is a frontend prototype. A future full-stack version could introduce:
+### 📱 Responsive Design
 
-Backend REST APIs
-PostgreSQL database
-Secure user authentication
-Real-time blood inventory
-Location-based donor matching
-Hospital and blood-bank verification
-Emergency request prioritization
-Real-time notifications
-Request audit history
-Administrative management
-Cloud deployment
-⚠️ Disclaimer
+- Clean and intuitive user interface
+- Responsive layouts
+- Modern dashboard-style design
 
-BloodBridge is an academic and portfolio prototype. It is not intended to replace hospitals, blood banks, healthcare professionals, or official medical systems.
+---
 
-👩‍💻 Author
+## 🛠️ Tech Stack
 
-Aayesha
+| Technology | Purpose |
+|------------|---------|
+| **HTML5** | Application structure |
+| **CSS3** | Styling and responsive design |
+| **JavaScript** | Frontend logic and interactions |
+| **LocalStorage** | Prototype data persistence |
 
-Computer Engineering Student
+---
 
-GitHub
+## 🏗️ System Overview
 
-📄 License
+BloodBridge is designed around four primary user roles:
 
-This project is intended for educational and portfolio purposes.
+```text
+                    ┌──────────────────┐
+                    │    BloodBridge   │
+                    └────────┬─────────┘
+                             │
+             ┌───────────────┼───────────────┐
+             │               │               │
+             ▼               ▼               ▼
+          Donor           Hospital        Blood Bank
+             │               │               │
+             └───────────────┼───────────────┘
+                             │
+                             ▼
+                     Blood Coordination
+                             │
+              ┌──────────────┼──────────────┐
+              │              │              │
+              ▼              ▼              ▼
+         Blood Search   Blood Requests   Availability
+              │              │              │
+              └──────────────┼──────────────┘
+                             │
+                             ▼
+                       Request Tracking
